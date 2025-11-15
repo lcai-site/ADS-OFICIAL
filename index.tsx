@@ -463,7 +463,7 @@ const ImageCreator = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [generatedImages, setGeneratedImages] = useState<GeneratedImage[]>([]);
-    const ai = useMemo(() => new GoogleGenAI({ apiKey: process.env.API_KEY }), []);
+    const ai = useMemo(() => new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY }), []);
 
     const resetState = () => {
         setReferenceFile(null);
@@ -824,7 +824,7 @@ const VideoEditor = () => {
     const elementImageCache = useRef<Map<string, HTMLImageElement>>(new Map());
     const fontPickerRef = useRef<HTMLDivElement>(null);
 
-    const ai = useMemo(() => new GoogleGenAI({ apiKey: process.env.API_KEY }), []);
+    const ai = useMemo(() => new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY }), []);
 
     const selectedElement = useMemo(() => {
         return elements.find(el => el.id === selectedElementId) || null;
