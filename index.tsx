@@ -1578,3 +1578,5 @@ const VideoNarrator = () => {
     const [narrationScript, setNarrationScript] = useState('');
     const [selectedVoice, setSelectedVoice] = useState(VOICES[0].id);
     const [selectedLanguages, setSelectedLanguages] = useState<string[]>(['pt']);
+
+}
