@@ -1437,13 +1437,21 @@ const VideoEditor = () => {
                         <span>Gerar Legendas</span>
                     </button>
                     <div className="prompt-group">
-                        <input
-                            type="text"
+                        <select
                             value={countryPrompt}
                             onChange={(e) => setCountryPrompt(e.target.value)}
-                            onKeyDown={(e) => e.key === 'Enter' && generateCountryElements()}
-                            placeholder="Info por País. Ex: Brasil"
-                        />
+                        >
+                            <option value="">Selecione um país</option>
+                            {Object.entries(LANGUAGE_TO_COUNTRIES_MAP).map(([langCode, countries]) => (
+                                <optgroup key={langCode} label={LANGUAGES[langCode]?.name || langCode.toUpperCase()}>
+                                    {countries.map(country => (
+                                        <option key={country.code} value={country.name}>
+                                            {country.name}
+                                        </option>
+                                    ))}
+                                </optgroup>
+                            ))}
+                        </select>
                         <button onClick={generateCountryElements} disabled={isLoading || !countryPrompt}>
                             {isLoading ? <div className="spinner-small"></div> : <GlobeIcon />}
                         </button>
